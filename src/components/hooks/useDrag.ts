@@ -33,7 +33,7 @@ export const useDrag = (
         if (sourceColumnIndex === destColumnIndex) {
           // 드래그 위치가 같을 때
           const newItems = [...items]
-          const columnItems = Array.from(newItems[sourceColumnIndex].contents)
+          const columnItems = newItems[sourceColumnIndex].contents
 
           const selectedItemIndices = isClickedItems
             .filter((item) => item.columnIdx === sourceColumnIndex)
@@ -56,8 +56,8 @@ export const useDrag = (
           return
         }
         const newItems = [...items]
-        const sourceItems = Array.from(newItems[sourceColumnIndex].contents)
-        const destItems = Array.from(newItems[destColumnIndex].contents)
+        const sourceItems = newItems[sourceColumnIndex].contents
+        const destItems = newItems[destColumnIndex].contents
 
         const selectedItemsInSourceColumn = isClickedItems.filter(
           (item) => item.columnIdx === sourceColumnIndex
@@ -88,7 +88,7 @@ export const useDrag = (
         setIsClickedItems([])
       } else if (sourceColumnIndex === destColumnIndex) {
         // 같은 컬럼 내에서 이동
-        const newContents = Array.from(items[sourceColumnIndex].contents)
+        const newContents = items[sourceColumnIndex].contents
         const [reorderedItem] = newContents.splice(source.index, 1)
         newContents.splice(destination.index, 0, reorderedItem)
 
@@ -111,8 +111,8 @@ export const useDrag = (
           return
         }
 
-        const sourceContents = Array.from(items[sourceColumnIndex].contents)
-        const destContents = Array.from(items[destColumnIndex].contents)
+        const sourceContents = items[sourceColumnIndex].contents
+        const destContents = items[destColumnIndex].contents
         const [movedItem] = sourceContents.splice(source.index, 1)
         destContents.splice(destination.index, 0, movedItem)
 
